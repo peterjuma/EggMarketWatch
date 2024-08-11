@@ -39,7 +39,7 @@ async function scrapeEggPrices() {
         const { region, url } = entry;
         console.log(`Scraping ${region} at URL: ${url}`);
         await page.goto(url, { waitUntil: 'networkidle2' });
-        await page.waitForTimeout(5000); // Increase wait time for page to fully load
+        await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
 
         const eggPrices = await page.evaluate((region) => {
             const items = document.querySelectorAll('.b-list-advert__gallery__item');
