@@ -4,7 +4,10 @@ const fs = require('fs');
 require('dotenv').config();
 
 async function scrapeEggPrices() {
-    const browser = await puppeteer.launch({ headless: true });
+    const browser = await puppeteer.launch({
+        headless: true, // Set to false for local debugging
+        args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
     const page = await browser.newPage();
 
     const urls = [
@@ -36,6 +39,7 @@ async function scrapeEggPrices() {
         const { region, url } = entry;
         console.log(`Scraping ${region} at URL: ${url}`);
         await page.goto(url, { waitUntil: 'networkidle2' });
+        await page.waitForTimeout(5000); // Increase wait time for page to fully load
 
         const eggPrices = await page.evaluate((region) => {
             const items = document.querySelectorAll('.b-list-advert__gallery__item');
