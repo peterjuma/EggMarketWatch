@@ -39,6 +39,16 @@ async function scrapeEggPrices() {
         const { region, url } = entry;
         console.log(`Scraping ${region} at URL: ${url}`);
         await page.goto(url, { waitUntil: 'networkidle2' });
+        // Wait for the checkbox to appear
+        await page.waitForSelector('#checkbox-captcha');
+
+        // Move the mouse to the checkbox and click it
+        const checkbox = await page.$('#checkbox-captcha');
+        const box = await checkbox.boundingBox();
+        
+        await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
+        await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+
         await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
 
         // Take a screenshot for debugging
