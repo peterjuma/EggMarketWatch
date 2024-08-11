@@ -27,3 +27,10 @@ jobs:
           EMAIL_USER: ${{ secrets.EMAIL_USER }}
           EMAIL_PASS: ${{ secrets.EMAIL_PASS }}
           MAILING_LIST: ${{ secrets.MAILING_LIST }}
+
+      - name: Upload screenshots
+        if: failure() || always() # Run this step if the job fails or succeeds
+        uses: actions/upload-artifact@v2
+        with:
+          name: screenshots
+          path: screenshot_*.png

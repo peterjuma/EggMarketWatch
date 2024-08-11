@@ -41,6 +41,12 @@ async function scrapeEggPrices() {
         await page.goto(url, { waitUntil: 'networkidle2' });
         await new Promise(resolve => setTimeout(resolve, 5000)); // Wait for 5 seconds
 
+        // Take a screenshot for debugging
+        await page.screenshot({ path: `screenshot_${region}.png` });
+
+        const htmlContent = await page.content();
+        console.log(htmlContent);
+
         const eggPrices = await page.evaluate((region) => {
             const items = document.querySelectorAll('.b-list-advert__gallery__item');
             console.log(`Found ${items.length} items on the page for ${region}`);
