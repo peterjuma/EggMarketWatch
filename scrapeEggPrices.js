@@ -156,8 +156,8 @@ function sendEmail(htmlContent) {
 
 
     const mailOptions = {
-        from: 'wanyonyi.p@gmail.com', // Replace with your email
-        to: 'wanyonyi.p@gmail.com', // Replace with recipient's email
+        from: process.env.EMAIL_USER, // Sender's email address
+        to: process.env.MAILING_LIST, // Comma-separated list of recipient emails
         subject: `Categorized Egg Prices per Region - ${currentDate}`,
         html: htmlContent,
     };
