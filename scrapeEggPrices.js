@@ -156,8 +156,11 @@ function sendEmail(htmlContent) {
 
 
     const mailOptions = {
+        // hide sender email address and mailing list
         from: process.env.EMAIL_USER, // Sender's email address
-        to: process.env.MAILING_LIST, // Comma-separated list of recipient emails
+        // to: process.env.MAILING_LIST, // Comma-separated list of recipient emails
+        // cc: process.env.MAILING_LIST, // Send a copy to the sender
+        bcc: process.env.MAILING_LIST, // Send a blind copy to the sender
         subject: `Categorized Egg Prices per Region - ${currentDate}`,
         html: htmlContent,
     };
