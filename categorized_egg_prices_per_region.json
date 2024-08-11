@@ -1,0 +1,294 @@
+{
+  "Farm Fresh Eggs": {
+    "ALL": {
+      "total": 770,
+      "count": 2,
+      "min": 350,
+      "max": 420,
+      "average": 385
+    },
+    "NAIROBI": {
+      "total": 550,
+      "count": 1,
+      "min": 550,
+      "max": 550,
+      "average": 550
+    },
+    "KAJIADO": {
+      "total": 770,
+      "count": 2,
+      "min": 350,
+      "max": 420,
+      "average": 385
+    },
+    "MOMBASA": {
+      "total": 770,
+      "count": 2,
+      "min": 350,
+      "max": 420,
+      "average": 385
+    },
+    "NAKURU": {
+      "total": 770,
+      "count": 2,
+      "min": 350,
+      "max": 420,
+      "average": 385
+    },
+    "THIKA": {
+      "total": 430,
+      "count": 1,
+      "min": 430,
+      "max": 430,
+      "average": 430
+    },
+    "KIAMBU": {
+      "total": 430,
+      "count": 1,
+      "min": 430,
+      "max": 430,
+      "average": 430
+    }
+  },
+  "Other Eggs": {
+    "ALL": {
+      "total": 5226,
+      "count": 11,
+      "min": 385,
+      "max": 800,
+      "average": 475.09090909090907
+    },
+    "NAIROBI": {
+      "total": 4410,
+      "count": 7,
+      "min": 350,
+      "max": 1000,
+      "average": 630
+    },
+    "KAJIADO": {
+      "total": 5676,
+      "count": 12,
+      "min": 385,
+      "max": 800,
+      "average": 473
+    },
+    "MOMBASA": {
+      "total": 5326,
+      "count": 12,
+      "min": 100,
+      "max": 800,
+      "average": 443.8333333333333
+    },
+    "NAKURU": {
+      "total": 6826,
+      "count": 13,
+      "min": 100,
+      "max": 1500,
+      "average": 525.0769230769231
+    },
+    "THIKA": {
+      "total": 2679,
+      "count": 7,
+      "min": 150,
+      "max": 440,
+      "average": 382.7142857142857
+    },
+    "KIAMBU": {
+      "total": 2679,
+      "count": 7,
+      "min": 150,
+      "max": 440,
+      "average": 382.7142857142857
+    }
+  },
+  "Wholesale Eggs": {
+    "ALL": {
+      "total": 2155,
+      "count": 5,
+      "min": 415,
+      "max": 450,
+      "average": 431
+    },
+    "NAIROBI": {
+      "total": 1605,
+      "count": 4,
+      "min": 380,
+      "max": 450,
+      "average": 401.25
+    },
+    "KAJIADO": {
+      "total": 2535,
+      "count": 6,
+      "min": 380,
+      "max": 450,
+      "average": 422.5
+    },
+    "MOMBASA": {
+      "total": 2925,
+      "count": 7,
+      "min": 380,
+      "max": 450,
+      "average": 417.85714285714283
+    },
+    "NAKURU": {
+      "total": 2155,
+      "count": 5,
+      "min": 415,
+      "max": 450,
+      "average": 431
+    },
+    "THIKA": {
+      "total": 390,
+      "count": 1,
+      "min": 390,
+      "max": 390,
+      "average": 390
+    },
+    "KIAMBU": {
+      "total": 390,
+      "count": 1,
+      "min": 390,
+      "max": 390,
+      "average": 390
+    }
+  },
+  "Layer Eggs": {
+    "ALL": {
+      "total": 410,
+      "count": 1,
+      "min": 410,
+      "max": 410,
+      "average": 410
+    },
+    "NAIROBI": {
+      "total": 780,
+      "count": 2,
+      "min": 370,
+      "max": 410,
+      "average": 390
+    },
+    "KAJIADO": {
+      "total": 410,
+      "count": 1,
+      "min": 410,
+      "max": 410,
+      "average": 410
+    },
+    "MOMBASA": {
+      "total": 410,
+      "count": 1,
+      "min": 410,
+      "max": 410,
+      "average": 410
+    },
+    "NAKURU": {
+      "total": 410,
+      "count": 1,
+      "min": 410,
+      "max": 410,
+      "average": 410
+    },
+    "THIKA": {
+      "total": 420,
+      "count": 1,
+      "min": 420,
+      "max": 420,
+      "average": 420
+    },
+    "KIAMBU": {
+      "total": 420,
+      "count": 1,
+      "min": 420,
+      "max": 420,
+      "average": 420
+    }
+  },
+  "Fertilized Eggs": {
+    "ALL": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    },
+    "KAJIADO": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    },
+    "MOMBASA": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    },
+    "NAKURU": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    },
+    "THIKA": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    },
+    "KIAMBU": {
+      "total": 900,
+      "count": 1,
+      "min": 900,
+      "max": 900,
+      "average": 900
+    }
+  },
+  "Kienyeji Eggs": {
+    "NAIROBI": {
+      "total": 2450,
+      "count": 3,
+      "min": 750,
+      "max": 900,
+      "average": 816.6666666666666
+    },
+    "KAJIADO": {
+      "total": 750,
+      "count": 1,
+      "min": 750,
+      "max": 750,
+      "average": 750
+    },
+    "MOMBASA": {
+      "total": 750,
+      "count": 1,
+      "min": 750,
+      "max": 750,
+      "average": 750
+    },
+    "NAKURU": {
+      "total": 750,
+      "count": 1,
+      "min": 750,
+      "max": 750,
+      "average": 750
+    },
+    "THIKA": {
+      "total": 700,
+      "count": 1,
+      "min": 700,
+      "max": 700,
+      "average": 700
+    },
+    "KIAMBU": {
+      "total": 700,
+      "count": 1,
+      "min": 700,
+      "max": 700,
+      "average": 700
+    }
+  }
+}
