@@ -39,26 +39,6 @@ async function scrapeEggPrices() {
         const { region, url } = entry;
         console.log(`Scraping ${region} at URL: ${url}`);
         await page.goto(url, { waitUntil: 'networkidle2' });
-        // Wait for the checkbox to appear
-        await page.screenshot({ path: `screenshot_${region}_before_captcha.png` });
-
-        try {
-            await page.waitForSelector('#checkbox-captcha', { timeout: 60000 }); // Increased timeout
-            console.log(`CAPTCHA checkbox found for ${region}`);
-            
-            const checkbox = await page.$('#checkbox-captcha');
-            const box = await checkbox.boundingBox();
-            await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2);
-            await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-
-            // Wait for any additional challenges to be solved
-            await page.waitForTimeout(5000);
-
-            // Continue with your scraping tasks
-        } catch (error) {
-            console.log(`Error: CAPTCHA checkbox not found for ${region} - ${error.message}`);
-            // Handle the case where CAPTCHA isn't found
-        }
 
         const eggPrices = await page.evaluate((region) => {
             const items = document.querySelectorAll('.b-list-advert__gallery__item');
