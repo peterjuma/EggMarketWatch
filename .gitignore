@@ -11,3 +11,6 @@ npm-debug.log*
 
 # Optional dotenv environment variables file
 .env
+
+
+.github/workflows/
