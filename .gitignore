@@ -12,3 +12,4 @@ npm-debug.log*
 # Optional dotenv environment variables file
 .env
 
+categorized_egg_prices_per_region*

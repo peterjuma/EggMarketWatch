@@ -105,8 +105,15 @@ async function scrapeEggPrices() {
     const htmlContent = generateHtmlTables(categorizedPrices);
     sendEmail(htmlContent);
 
-    fs.writeFileSync('categorized_egg_prices_per_region.json', JSON.stringify(categorizedPrices, null, 2));
-    console.log('Categorized egg prices per region have been saved to categorized_egg_prices_per_region.json');
+    const dataFile = 'categorized_egg_prices_per_region.json';
+    const currentDate = new Date().toISOString().split('T')[0];
+    // Generate the new file name
+    const currentDataFile = dataFile.replace('.json', `_${currentDate}.json`);
+    
+    // fs.writeFileSync(currentDataFile, JSON.stringify(categorizedPrices, null, 2));
+    fs.writeFileSync(currentDataFile, JSON.stringify(categorizedPrices, null, 2));
+
+    console.log('Categorized egg prices per region have been saved to the file:', currentDataFile);
 }
 
 function categorizeEggType(title, description) {
