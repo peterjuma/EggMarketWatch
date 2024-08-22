@@ -16,21 +16,10 @@ async function scrapeEggPrices() {
         { region: 'NAIROBI', url: 'https://jiji.co.ke/nairobi/meals-and-drinks?filter_attr_1594_type=Eggs' },
         { region: 'KITENGELA', url: 'https://jiji.co.ke/kitengela/meals-and-drinks?filter_attr_1594_type=Eggs' },
         { region: 'KAJIADO', url: 'https://jiji.co.ke/kajiado/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'MOMBASA', url: 'https://jiji.co.ke/mombasa/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NAKURU', url: 'https://jiji.co.ke/nakuru/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'ELDORET', url: 'https://jiji.co.ke/eldoret/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'KISII', url: 'https://jiji.co.ke/kisii/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NYERI', url: 'https://jiji.co.ke/nyeri/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'MERU', url: 'https://jiji.co.ke/meru/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'THIKA', url: 'https://jiji.co.ke/thika/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'KAKAMEGA', url: 'https://jiji.co.ke/kakamega/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'KERICHO', url: 'https://jiji.co.ke/kericho/meals-and-drinks?filter_attr_1594_type=Eggs' },
         { region: 'KIAMBU', url: 'https://jiji.co.ke/kiambu/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NYAHURURU', url: 'https://jiji.co.ke/nyahururu/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NYANDARUA', url: 'https://jiji.co.ke/nyandarua/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NYAMIRA', url: 'https://jiji.co.ke/nyamira/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'NYERI', url: 'https://jiji.co.ke/nyeri/meals-and-drinks?filter_attr_1594_type=Eggs' },
-        { region: 'BUNGOMA', url: 'https://jiji.co.ke/bungoma/meals-and-drinks?filter_attr_1594_type=Eggs' },
+        { region: 'KISERIAN', url: 'https://jiji.co.ke/kiserian/meals-and-drinks?filter_attr_1594_type=Eggs' },
+        { region: 'NGONG', url: 'https://jiji.co.ke/ngong/meals-and-drinks?filter_attr_1594_type=Eggs' },
+        { region: 'MLOLONGO', url: 'https://jiji.co.ke/mlolongo/meals-and-drinks?filter_attr_1594_type=Eggs' },
     ];
 
     const allEggPrices = [];
@@ -110,7 +99,6 @@ async function scrapeEggPrices() {
     // Generate the new file name
     const currentDataFile = dataFile.replace('.json', `_${currentDate}.json`);
     
-    // fs.writeFileSync(currentDataFile, JSON.stringify(categorizedPrices, null, 2));
     fs.writeFileSync(currentDataFile, JSON.stringify(categorizedPrices, null, 2));
 
     console.log('Categorized egg prices per region have been saved to the file:', currentDataFile);
@@ -135,22 +123,45 @@ function categorizeEggType(title, description) {
 }
 
 function generateHtmlTables(categorizedPrices) {
-    let html = '';
+    let summaryHtml = `
+    <h2>Egg Price Summary by Region</h2>
+    <table style="width: 100%; border-collapse: collapse; border: 1px solid #ddd; font-family: Arial, sans-serif;">
+        <thead>
+            <tr style="background-color: #f2f2f2;">
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Region</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: left;">Category</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: right;">Average Price</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: right;">Min Price</th>
+                <th style="border: 1px solid #ddd; padding: 8px; text-align: right;">Max Price</th>
+            </tr>
+        </thead>
+        <tbody>`;
 
-    for (const category in categorizedPrices) {
-        let table = `<h2>${category}</h2><table border="1"><thead><tr><th>Region</th><th>Average</th><th>Min</th><th>Max</th></tr></thead><tbody>`;
-        
-        for (const region in categorizedPrices[category]) {
-            const regionData = categorizedPrices[category][region];
-            regionData.average = regionData.total / regionData.count;
-            table += `<tr><td>${region}</td><td>${regionData.average.toFixed(2)}</td><td>${regionData.min}</td><td>${regionData.max}</td></tr>`;
+    const selectedRegions = ['KIAMBU', 'NAIROBI', 'KAJIADO', 'ALL'];
+
+    for (const region of selectedRegions) {
+        for (const category in categorizedPrices) {
+            if (categorizedPrices[category][region]) {
+                const regionData = categorizedPrices[category][region];
+                const average = (regionData.total / regionData.count).toFixed(2);
+                summaryHtml += `
+                <tr>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${region}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px;">${category}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">${average}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">${regionData.min}</td>
+                    <td style="border: 1px solid #ddd; padding: 8px; text-align: right;">${regionData.max}</td>
+                </tr>`;
+            }
         }
-
-        table += '</tbody></table><br>';
-        html += table;
     }
 
-    return html;
+    summaryHtml += `
+        </tbody>
+    </table>
+    <p style="font-family: Arial, sans-serif;">Data retrieved on ${new Date().toLocaleDateString('en-GB')}</p>`;
+
+    return summaryHtml;
 }
 
 function sendEmail(htmlContent) {
@@ -166,10 +177,7 @@ function sendEmail(htmlContent) {
 
 
     const mailOptions = {
-        // hide sender email address and mailing list
         from: process.env.EMAIL_USER, // Sender's email address
-        // to: process.env.MAILING_LIST, // Comma-separated list of recipient emails
-        // cc: process.env.MAILING_LIST, // Send a copy to the sender
         bcc: process.env.MAILING_LIST, // Send a blind copy to the sender
         subject: `Categorized Egg Prices per Region - ${currentDate}`,
         html: htmlContent,
